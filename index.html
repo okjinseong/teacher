@@ -1,0 +1,1417 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개금고등학교 2026학년도 1학기 교사 임시시간표 조회(2026.2.27. 13:42)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #5A67D8;
+            --primary-light: #7f8ff0;
+            --background-color: #F7FAFC;
+            --card-background: #FFFFFF;
+            --text-color: #2D3748;
+            --subtle-text: #718096;
+            --border-color: #E2E8F0;
+        }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0; 
+            padding: 24px; 
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+        #app-container { 
+            max-width: 980px; 
+            margin: 20px auto; 
+            background-color: var(--card-background); 
+            padding: 36px; 
+            border-radius: 14px; 
+            border: 1px solid var(--border-color);
+        }
+        h1 { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color); 
+            margin-bottom: 30px; 
+            text-align: center; 
+            font-size: 2em;
+            font-weight: 700;
+            gap: 12px;
+            letter-spacing: -0.01em;
+        }
+        .title-icon { 
+            height: 2.5em; 
+            margin-right: 0; 
+            border-radius: 8px; 
+            max-width: 150px; 
+            object-fit: contain;
+        }
+        .title-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            font-size: 0.42em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--subtle-text);
+            background-color: var(--background-color);
+            white-space: nowrap;
+        }
+        #search-section { 
+            background: var(--card-background);
+            padding: 22px; 
+            border-radius: 12px; 
+            margin: 0 auto 30px;
+            max-width: 760px;
+            border: 1px solid var(--border-color);
+        }
+        .search-container { position: relative; max-width: 500px; margin: 0 auto; }
+        #teacher-search { 
+            width: 100%; 
+            padding: 15px 20px 15px 50px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; 
+            font-size: 16px; 
+            background-color: var(--card-background); 
+            color: var(--text-color);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease; 
+            outline: none; 
+            box-sizing: border-box;
+        }
+        #teacher-search:focus { 
+            border-color: var(--primary-color); 
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+        .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--subtle-text); font-size: 20px; }
+        .autocomplete-dropdown { position: absolute; top: calc(100% + 5px); left: 0; right: 0; background: var(--card-background); border: 1px solid var(--border-color); border-radius: 12px; max-height: 200px; overflow-y: auto; z-index: 1000; display: none; }
+        .autocomplete-item { padding: 12px 20px; cursor: pointer; border-bottom: 1px solid var(--border-color); transition: background-color 0.2s; color: var(--text-color); }
+        .autocomplete-item:hover, .autocomplete-item.selected { background-color: var(--primary-light); color: white; }
+        .autocomplete-item:last-child { border-bottom: none; }
+        .favorites-section { margin-top: 20px; text-align: center; }
+        .favorites-title { font-size: 14px; color: var(--subtle-text); margin-bottom: 12px; }
+        .favorite-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .favorite-chip { background: var(--card-background); color: var(--text-color); padding: 8px 14px; border-radius: 20px; font-size: 14px; cursor: pointer; transition: background-color 0.2s; border: 1px solid var(--border-color); font-weight: 500; }
+        .favorite-chip:hover { background: var(--primary-light); color: white; border-color: var(--primary-light); }
+        .search-stats { text-align: center; margin: 15px 0; color: var(--subtle-text); font-size: 14px; }
+        .all-download-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border-color); text-align: center; }
+        .all-download-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border: 1px solid var(--border-color); background: var(--card-background); color: var(--subtle-text); border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+        .all-download-btn:hover { background: var(--primary-light); color: white; border-color: var(--primary-light); }
+        .favorite-inline {
+            display: inline-block;
+            margin-right: 8px;
+            padding: 1px 7px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            color: var(--subtle-text);
+            font-size: 11px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        #schedule-container {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .schedule-header { display: flex; justify-content: space-between; align-items: center; margin: 0 auto 16px; padding: 10px 0; max-width: 620px; }
+        .teacher-info h2 { margin: 0; color: var(--text-color); font-size: 1.8em; font-weight: 700;}
+        .teacher-info-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .info-chip { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; }
+        .info-chip-subject { background: var(--primary-light); color: white; }
+        .info-chip-role { background: var(--background-color); color: var(--text-color); border: 1px solid var(--border-color); }
+        .info-chip-ext { background: var(--background-color); color: var(--subtle-text); border: 1px solid var(--border-color); font-weight: 600; letter-spacing: 0.03em; }
+        .teacher-actions { display: flex; gap: 10px; }
+        .action-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--border-color); background: var(--card-background); color: var(--subtle-text); border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 500; transition: background-color 0.2s ease, color 0.2s ease; }
+        .action-btn:hover { background: var(--primary-light); color: white; border-color: var(--primary-light);}
+        .action-btn.favorited { background: #FFC107; border-color: #FFC107; color: white; }
+
+        /* 테이블 컨테이너 추가 */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 0; font-size: 14px; table-layout: fixed; }
+        th, td { border-bottom: 1px solid var(--border-color); padding: 0 6px; text-align: center; vertical-align: middle; transition: background-color 0.2s; word-wrap: break-word; height: 54px; }
+        th:first-child, td:first-child { width: 56px; }
+        thead th { color: var(--subtle-text); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--border-color); background-color: var(--card-background); height: 42px; }
+        td:first-child { font-weight: 500; color: var(--text-color); background-color: var(--background-color); font-size: 13px; }
+        
+        /* 테이블 테두리 스타일 개선 */
+        tbody tr td:first-child { border-left: 1px solid var(--border-color);}
+        tbody tr:first-child td { border-top: 1px solid var(--border-color); }
+        tbody td { border-right: 1px solid var(--border-color); background-color: var(--card-background); }
+        
+        /* 선택반 태그 스타일 */
+        .subject-tag {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            border-radius: 50%;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+            margin-right: 8px;
+            vertical-align: middle;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* 수업장소 칩 스타일 */
+        .location-chip {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            margin-right: 6px;
+            margin-bottom: 2px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .empty-state { text-align: center; padding: 72px 20px; }
+        .empty-state-icon {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 18px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--background-color);
+        }
+        .empty-state-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+        .empty-state h3 { font-size: 1.5em; font-weight: 500; color: var(--text-color); }
+        .empty-state p { color: var(--subtle-text); }
+
+        /* 사이드바 */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.25);
+            z-index: 999;
+        }
+        .sidebar-overlay.active { display: block; }
+
+        .sidebar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 260px;
+            height: 100vh;
+            background: var(--card-background);
+            border-right: 1px solid var(--border-color);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+        }
+        .sidebar.open { transform: translateX(0); }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 18px 14px;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .sidebar-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--subtle-text);
+            padding: 4px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.15s, color 0.15s;
+        }
+        .sidebar-close:hover { background: var(--background-color); color: var(--text-color); }
+
+        .sidebar-search {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        .sidebar-search input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 13px;
+            background: var(--background-color);
+            color: var(--text-color);
+            outline: none;
+            box-sizing: border-box;
+        }
+        .sidebar-search input:focus { border-color: var(--primary-color); }
+
+        .sidebar-count {
+            padding: 8px 18px;
+            font-size: 11px;
+            color: var(--subtle-text);
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .sidebar-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+        .sidebar-item {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-color);
+            transition: background-color 0.12s;
+            border-left: 3px solid transparent;
+        }
+        .sidebar-item:hover { background: var(--background-color); }
+        .sidebar-item.active {
+            background: var(--primary-light);
+            color: white;
+            border-left-color: var(--primary-color);
+            font-weight: 600;
+        }
+        .sidebar-item-main {
+            display: flex;
+            align-items: center;
+        }
+        .sidebar-fav {
+            margin-left: auto;
+            font-size: 11px;
+            opacity: 0.5;
+        }
+        .sidebar-item-info {
+            font-size: 11px;
+            color: var(--subtle-text);
+            margin-top: 3px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sidebar-item.active .sidebar-item-info { color: rgba(255,255,255,0.75); }
+        .sidebar-ext {
+            display: inline-flex;
+            align-items: center;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: var(--background-color);
+            color: var(--subtle-text);
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        .sidebar-item.active .sidebar-ext { background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 998;
+            background: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 6px 14px 4px;
+            cursor: pointer;
+            color: var(--subtle-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.06);
+            transition: background-color 0.15s, color 0.15s;
+            writing-mode: vertical-rl;
+            font-size: 12px;
+            font-weight: 600;
+            gap: 4px;
+            letter-spacing: 0.05em;
+        }
+        .sidebar-toggle:hover { background: var(--primary-light); color: white; border-color: var(--primary-light); }
+        .sidebar-toggle svg { transform: rotate(90deg); }
+
+        /* 모바일 반응형 디자인 */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            #app-container {
+                padding: 20px;
+                margin: 10px auto;
+                border-radius: 12px;
+            }
+            .sidebar { width: 240px; }
+            .sidebar-toggle { padding: 10px 5px 10px 3px; font-size: 11px; }
+            h1 { 
+                font-size: 1.5em; 
+                margin-bottom: 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .title-icon { 
+                margin-right: 0; 
+                margin-bottom: 5px;
+                height: 2em;
+                max-width: 120px;
+            }
+            
+            /* 검색 섹션 모바일 최적화 */
+            #search-section { 
+                padding: 20px 15px; 
+                margin-bottom: 20px;
+            }
+            .search-container { 
+                max-width: 100%; 
+            }
+            #teacher-search { 
+                width: 100%;
+                padding: 12px 15px 12px 45px; 
+                font-size: 16px; /* iOS 줌 방지 */
+                border-radius: 8px;
+                box-sizing: border-box;
+            }
+            .search-icon { 
+                left: 15px; 
+            }
+            
+            /* 즐겨찾기 칩 모바일 최적화 */
+            .favorite-chips { 
+                gap: 8px; 
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+            .favorite-chip { 
+                padding: 6px 12px; 
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            
+            /* 스케줄 헤더 모바일 최적화 */
+            .schedule-header { 
+                flex-direction: column; 
+                gap: 15px; 
+                align-items: flex-start;
+                margin-bottom: 15px;
+            }
+            .teacher-info h2 { 
+                font-size: 1.4em; 
+                text-align: center;
+                width: 100%;
+            }
+            .teacher-actions { 
+                width: 100%; 
+                display: flex; 
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            .action-btn {
+                flex: 1;
+                min-width: 80px;
+                padding: 10px 12px;
+                font-size: 13px;
+                justify-content: center;
+            }
+            .all-download-btn {
+                font-size: 12px;
+                padding: 9px 16px;
+            }
+
+            /* 테이블 모바일 최적화 */
+            table {
+                font-size: 12px;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            th, td {
+                padding: 0 3px;
+                line-height: 1.3;
+                height: 48px;
+            }
+            td small { 
+                font-size: 10px; 
+                display: block;
+                margin-top: 2px;
+            }
+            
+            /* 교시 열 고정 */
+            th:first-child, td:first-child {
+                position: sticky;
+                left: 0;
+                background: var(--card-background);
+                z-index: 1;
+                border-right: 1px solid var(--border-color);
+                min-width: 50px;
+            }
+            
+            /* 빈 상태 모바일 최적화 */
+            .empty-state { 
+                padding: 60px 20px; 
+            }
+            .empty-state-icon { 
+                width: 56px;
+                height: 56px;
+                margin-bottom: 14px;
+            }
+            .empty-state-icon svg { width: 24px; height: 24px; }
+            .empty-state h3 {
+                font-size: 1.2em;
+                margin-top: 15px;
+            }
+            
+            /* 자동완성 드롭다운 모바일 최적화 */
+            .autocomplete-dropdown {
+                max-height: 150px;
+                border-radius: 8px;
+            }
+            .autocomplete-item {
+                padding: 15px 20px;
+                font-size: 14px;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+        
+        /* 작은 모바일 화면 */
+        @media (max-width: 480px) {
+            #app-container { 
+                padding: 15px; 
+                margin: 5px auto;
+            }
+            h1 { 
+                font-size: 1.3em; 
+            }
+            .title-icon { 
+                height: 1.8em;
+                max-width: 100px;
+            }
+            table {
+                font-size: 11px;
+            }
+            th, td {
+                padding: 0 2px;
+                height: 44px;
+            }
+            .teacher-info h2 { 
+                font-size: 1.2em; 
+            }
+            .action-btn {
+                font-size: 13px;
+                padding: 8px 10px;
+            }
+        }
+
+        @media print {
+            body { background: white; padding: 0; margin: 0; }
+            #app-container { box-shadow: none; padding: 15px; margin: 0; max-width: 100%; }
+            #search-section { display: none; }
+            h1 { display: none; }
+            .teacher-actions { display: none; }
+            .sidebar, .sidebar-toggle, .sidebar-overlay { display: none !important; }
+            .schedule-header { margin-bottom: 10px; text-align: center; }
+            .teacher-info h2 { font-size: 9pt; margin: 0; font-weight: bold; }
+            .teacher-info-tags { margin-top: 4px; }
+            .info-chip { font-size: 7pt; padding: 2px 6px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            table {
+                font-size: 9pt;
+                margin: 0 auto;
+                width: 65%;
+                max-width: 500px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                page-break-inside: avoid;
+            }
+            td, th {
+                padding: 0 4px;
+                height: 32px;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                line-height: 1.2;
+            }
+            .location-chip { 
+                font-size: 8px;
+                padding: 2px 5px;
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+            .subject-tag { 
+                width: 16px;
+                height: 16px;
+                line-height: 16px;
+                font-size: 8px;
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 사이드바 -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <button class="sidebar-toggle" id="sidebar-toggle" title="교사 목록 열기">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        교사목록
+    </button>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>교사 목록</h3>
+            <button class="sidebar-close" id="sidebar-close" title="닫기">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="sidebar-search">
+            <input type="text" id="sidebar-search-input" placeholder="이름 검색...">
+        </div>
+        <div class="sidebar-count" id="sidebar-count"></div>
+        <div class="sidebar-list" id="sidebar-list"></div>
+    </nav>
+
+    <div id="app-container">
+        <h1>
+            <span class="title-mark">TIMETABLE</span>
+            <span>개금고등학교 2026학년도 1학기 교사 임시시간표 조회(2026.2.27. 13:42)</span>
+        </h1>
+        <div id="search-section">
+            <div class="search-container">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <input type="text" id="teacher-search" placeholder="교사 이름을 입력하세요...">
+                <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
+            </div>
+            <div class="search-stats" id="search-stats"></div>
+            <div class="favorites-section">
+                <div class="favorites-title">자주 찾는 교사</div>
+                <div class="favorite-chips" id="favorite-chips"></div>
+            </div>
+            <div class="all-download-section">
+                <button class="all-download-btn" onclick="downloadAllExcel()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
+                    전체 시간표 엑셀 다운로드
+                </button>
+            </div>
+        </div>
+        <div id="schedule-container">
+            <div class="empty-state">
+                <div class="empty-state-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2z"></path>
+                        <path d="M8 9h8"></path>
+                        <path d="M8 13h5"></path>
+                    </svg>
+                </div>
+                <h3>시간표를 확인하고 싶은 교사를 검색해보세요</h3>
+                <p>이름을 입력하시면 자동으로 목록이 나타납니다</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const allSchedules = [{"name":"김민식","schedule":{"월":["301\r\nK_심국",null,"301\r\nE_화작",null,null,"301\r\nI_심국","301\r\nH_심국"],"화":[null,"301\r\r\n프탐",null,"301\r\nF_화작","301\r\nH_화작",null,null],"수":[null,null,"301\r\r\nG_심국","301\r\nH_화작"],"목":[null,"301\r\nH_심국","301\r\r\nE_화작",null,"301\r\r\nG_심국",null,"301\r\nK_심국"],"금":[null,"301\r\r\n프탐","301\r\nI_심국",null,null,null,"301\r\nF_화작"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박민희","schedule":{"월":[null,null,null,"305\r\r\nJ_심리","105\r\r\n공국1",null,"104\r\r\n공국1"],"화":["103\r\r\n공국1",null,"306\r\nK_심리",null,null,"106\r\r\n공국1","105\r\r\n공국1"],"수":["101\r\r\n공국1",null,"104\r\r\n공국1",null],"목":[null,"102\r\r\n공국1",null,null,"106\r\r\n공국1",null,null],"금":["305\r\r\nJ_심리","101\r\r\n공국1",null,"103\r\r\n공국1","102\r\r\n공국1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박진주","schedule":{"월":[null,"206\r\r\n문학","202\r\r\n문학",null,null,"204\r\r\n문학",null],"화":[null,null,null,"201\r\r\n문학",null,null,"207\r\r\n문학"],"수":[null,"205\r\r\n문학","203\r\r\n문학",null],"목":["207\r\r\n문학",null,"307\r\nE_심리","203\r\r\n문학",null,null,"201\r\r\n문학"],"금":["204\r\r\n문학",null,"205\r\r\n문학",null,null,"202\r\r\n문학","206\r\r\n문학"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이동기","schedule":{"월":[null,"301\r\nG_심국",null,null,null,null,"301\r\nH_화작"],"화":["301\r\nI_심국",null,"301\r\nK_심국",null,"301\r\nH_심국","301\r\r\nG_심국",null],"수":["301\r\nE_화작","301\r\nF_화작",null,"301\r\nH_심국"],"목":["301\r\nI_심국","301\r\nH_화작",null,"301\r\nF_화작",null,null,"306\r\r\nK_심리"],"금":[null,"302\r\r\n프탐",null,"301\r\nK_심국",null,"301\r\r\nE_화작"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"조현주","schedule":{"월":["306\r\r\nK_심리","103\r\r\n공국1",null,"106\r\r\n공국1",null,null,"102\r\r\n공국1"],"화":[null,"101\r\r\n공국1",null,null,"104\r\r\n공국1",null,"305\r\r\nJ_심리"],"수":["105\r\r\n공국1",null,"102\r\r\n공국1",null],"목":[null,"104\r\r\n공국1",null,"103\r\r\n공국1","101\r\r\n공국1",null,null],"금":["106\r\r\n공국1","105\r\r\n공국1",null,"306\r\r\nK_심리"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"국어a","schedule":{"월":[null,"201\r\r\n문학",null,"207\r\r\n문학",null,"206\r\r\n문학",null],"화":["202\r\r\n문학",null,"203\r\r\n문학","204\r\r\n문학",null,null,null],"수":[null,"204\r\r\n문학",null,null],"목":[null,"302\r\r\nH_진독","207\r\r\n문학","206\r\r\n문학",null,"201\r\r\n문학","205\r\r\n문학"],"금":["205\r\r\n문학",null,"203\r\r\n문학",null,null,"307\r\r\nE_심리","202\r\r\n문학"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"김라영","schedule":{"월":[null,"306\r\nG_심수1","306\r\nE_심수1",null,null,null,"306\r\nH_심수1"],"화":[null,"306\r\r\n프탐","304\r\nK_확통",null,"304\r\r\nH_확통","206\r\r\nB_진직",null],"수":["304\r\nE_확통",null,null,"304\r\r\nH_확통"],"목":[null,"304\r\r\nH_확통","304\r\nE_확통",null,null,null,"304\r\nK_확통"],"금":[null,"306\r\r\n프탐",null,"304\r\nK_확통",null,"304\r\nE_확통"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"김성대","schedule":{"월":["102\r\r\n공수1",null,"307\r\r\nE_심리","104\r\r\n공수1",null,null,"103\r\r\n공수1"],"화":[null,"302\r\r\n프탐",null,"102\r\r\n공수1",null,"101\r\r\n공수1",null],"수":["307\r\r\nE_심리","103\r\r\n공수1",null,"105\r\r\n공수1"],"목":[null,null,"106\r\r\n공수1",null,"105\r\r\n공수1",null,null],"금":["101\r\r\n공수1","104\r\r\n공수1",null,null,null,null,"106\r\r\n공수1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박철범","schedule":{"월":["304\r\nK_확통",null,"304\r\nE_확통","303\r\r\nJ_진독",null,null,"304\r\nH_확통"],"화":[null,"307\r\r\n프탐",null,null,"306\r\r\nH_심수1","306\r\nG_심수1",null],"수":["306\r\nE_심수1",null,"306\r\nG_심수1","306\r\r\nH_심수1"],"목":[null,"306\r\nH_심수1","306\r\nE_심수1",null,"306\r\nG_심수1",null,null],"금":[null,"307\r\r\n프탐",null,null,null,"306\r\nE_심수1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"성옥진","schedule":{"월":[null,null,null,"201\r\r\n대수",null,"202\r\r\n대수",null],"화":["203\r\r\n대수",null,"202\r\r\n대수","207\r\r\n대수","301\r\r\nH_진독",null,null],"수":[null,null,"205\r\r\n대수",null],"목":["201\r\r\n대수",null,"206\r\r\n대수","307\r\r\nF_진독",null,"205\r\r\n대수","204\r\r\n대수"],"금":["207\r\r\n대수",null,"206\r\r\n대수",null,null,"203\r\r\n대수","204\r\r\n대수"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"윤홍주","schedule":{"월":[null,"202\r\r\n대수","207\r\r\n대수","203\r\r\n대수",null,"205\r\r\n대수",null],"화":["205\r\r\n대수","305\r\r\n프탐",null,null,null,null,"201\r\r\n대수"],"수":[null,"206\r\r\n대수","204\r\r\n대수",null],"목":["203\r\r\n대수",null,null,null,null,"204\r\r\n대수","206\r\r\n대수"],"금":[null,"305\r\r\n프탐","202\r\r\n대수",null,null,"201\r\r\n대수","207\r\r\n대수"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이민경","schedule":{"월":[null,null,"106\r\r\n공수1","101\r\r\n공수1",null,null,"105\r\r\n공수1"],"화":[null,"303\r\r\n프탐","101\r\r\n공수1","106\r\r\n공수1",null,"104\r\r\n공수1",null],"수":["206\r\r\nB_진직",null,null,null],"목":["103\r\r\n공수1",null,"104\r\r\n공수1","102\r\r\n공수1",null,"305\r\r\nJ_심리",null],"금":[null,"303\r\r\n프탐",null,"102\r\r\n공수1",null,"105\r\r\n공수1","103\r\r\n공수1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"수학a","schedule":{"월":[null,null,null,null,null,null,"207\r\r\nD_세트"],"화":[null,"207\r\r\nD_세트",null,null,null,null,null],"수":[null,null,null,null],"목":[null,null,null,null,null,null,null],"금":[null,"207\r\r\nD_세트"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"김미진","schedule":{"월":[null,"101\r\r\n공영1","105\r\r\n공영1",null,"102\r\r\n공영1",null,null],"화":["305\r\nI_영독작",null,null,"104\r\r\n공영1",null,null,"106\r\r\n공영1"],"수":["103\r\r\n공영1","305\r\nF_영독작",null,null],"목":[null,"206\r\r\nB_진직","101\r\r\n공영1",null,"103\r\r\n공영1","106\r\r\n공영1",null],"금":["105\r\r\n공영1","102\r\r\n공영1",null,"104\r\r\n공영1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"김효진","schedule":{"월":["106\r\r\n공영1",null,null,null,null,"103\r\r\n공영1",null],"화":["101\r\r\n공영1",null,null,"305\r\nF_영독작",null,"102\r\r\n공영1","104\r\r\n공영1"],"수":[null,"105\r\r\n공영1","103\r\r\n공영1",null],"목":["305\r\nI_영독작",null,"102\r\r\n공영1",null,null,"105\r\r\n공영1","104\r\r\n공영1"],"금":[null,null,"101\r\r\n공영1",null,"106\r\r\n공영1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"양미진","schedule":{"월":[null,null,null,"303\r\nJ_심영독",null,null,"303\r\nH_심영독"],"화":[null,"304\r\r\n프탐",null,"303\r\nF_심영독","303\r\nH_심영독",null,"303\r\nJ_심영독"],"수":[null,"303\r\nF_심영독",null,"303\r\nH_심영독"],"목":[null,"303\r\nH_심영독",null,"303\r\nF_심영독","304\r\r\nG_진독","303\r\nJ_심영독",null],"금":["303\r\nJ_심영독","304\r\r\n프탐",null,null,null,null,"303\r\nF_심영독"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이명선","schedule":{"월":[null,"205\r\r\n영어1","206\r\r\n영어1",null,null,"207\r\r\n영어1",null],"화":[null,null,"207\r\r\n영어1","202\r\r\n영어1",null,"305\r\r\nG_진독","204\r\r\n영어1"],"수":[null,"203\r\r\n영어1","206\r\r\n영어1",null],"목":["202\r\r\n영어1",null,"201\r\r\n영어1","205\r\r\n영어1",null,null,"203\r\r\n영어1"],"금":["201\r\r\n영어1",null,"305\r\nI_영독작",null,null,"204\r\r\n영어1","305\r\nF_영독작"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이수은","schedule":{"월":[null,null,"201\r\r\n영어1","202\r\r\n영어1",null,"305\r\nI_영독작",null],"화":["201\r\r\n영어1",null,"205\r\r\n영어1",null,null,null,"206\r\r\n영어1"],"수":[null,"202\r\r\n영어1","207\r\r\n영어1",null],"목":["204\r\r\n영어1",null,"203\r\r\n영어1","305\r\nF_영독작",null,"206\r\r\n영어1",null],"금":["203\r\r\n영어1",null,"204\r\r\n영어1",null,null,"207\r\r\n영어1","205\r\r\n영어1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박소정","schedule":{"월":["207\r\nC_세계사",null,null,null,null,null,"106\r\r\n한국1"],"화":[null,"104\r\r\n한국1","106\r\r\n한국1",null,"105\r\r\n한국1","207\r\nB_세계사",null],"수":["207\r\nB_세계사","104\r\r\n한국1",null,"106\r\r\n한국1"],"목":[null,"207\r\nB_세계사",null,"104\r\r\n한국1","207\r\r\nC_세계사",null,"105\r\r\n한국1"],"금":[null,null,null,"207\r\r\nC_세계사",null,null,"105\r\r\n한국1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"최희정","schedule":{"월":[null,"305\r\r\nG_한국사",null,null,"103\r\r\n한국1","102\r\r\n한국1",null],"화":["102\r\r\n한국1","103\r\r\n한국1",null,null,"101\r\r\n한국1",null,"306\r\r\nJ_한국사"],"수":[null,"307\r\r\nF_한국사","304\r\r\nG_한국사","302\r\r\nH_한국사"],"목":[null,"301\r\r\nH_한국사",null,"101\r\r\n한국1",null,"303\r\r\nJ_한국사","103\r\r\n한국1"],"금":[null,null,"102\r\r\n한국1",null,"101\r\r\n한국1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박유미","schedule":{"월":["307\r\nK_생윤","307\r\nG_생윤",null,null,"203\r\nA_현윤","307\r\nI_생윤",null],"화":["307\r\nI_생윤",null,"307\r\nK_생윤",null,"203\r\nA_현윤","307\r\nG_생윤",null],"수":[null,null,"307\r\nG_생윤","203\r\nA_현윤"],"목":["307\r\nI_생윤",null,null,null,"307\r\nG_생윤",null,"307\r\nK_생윤"],"금":[null,null,"307\r\nI_생윤","307\r\nK_생윤",null,"106\r\r\n통사1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"원남경","schedule":{"월":["103\r\r\n통사1",null,"102\r\r\n통사1",null,"106\r\r\n통사1","101\r\r\n통사1",null],"화":[null,"102\r\r\n통사1",null,"103\r\r\n통사1",null,"105\r\r\n통사1","101\r\r\n통사1"],"수":["104\r\r\n통사1",null,"105\r\r\n통사1",null],"목":[null,"103\r\r\n통사1",null,"105\r\r\n통사1","104\r\r\n통사1",null,"106\r\r\n통사1"],"금":["102\r\r\n통사1",null,null,"101\r\r\n통사1","104\r\r\n통사1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박선하","schedule":{"월":["205\r\r\nC_사문탐",null,null,"304\r\nJ_사·문","205\r\nA_사문탐",null,"205\r\nD_사문탐"],"화":[null,"205\r\nD_사문탐",null,null,"205\r\nA_사문탐","205\r\nB_사문탐","304\r\nJ_사·문"],"수":["205\r\nB_사문탐",null,null,"205\r\nA_사문탐"],"목":[null,"205\r\nB_사문탐",null,null,"205\r\nC_사문탐","304\r\nJ_사·문",null],"금":["304\r\nJ_사·문","205\r\nD_사문탐",null,"205\r\r\nC_사문탐"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"조영란","schedule":{"월":["206\r\nC_사문",null,"305\r\nE_사·문",null,"206\r\nA_사문","304\r\nI_사·문","206\r\nD_사문"],"화":["304\r\nI_사·문","206\r\nD_사문",null,null,"206\r\nA_사문",null,null],"수":["305\r\nE_사·문",null,null,"206\r\nA_사문"],"목":["304\r\nI_사·문",null,"305\r\nE_사·문",null,"206\r\nC_사문",null,null],"금":[null,"206\r\nD_사문","304\r\nI_사·문","206\r\nC_사문",null,"305\r\nE_사·문"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이현주","schedule":{"월":[null,null,null,null,"205\r\r\nA_세지","104\r\r\n통사1",null],"화":[null,"106\r\r\n통사1",null,"306\r\nF_한지","201\r\nA_세지","204\r\nB_세지",null],"수":["204\r\nB_세지","306\r\nF_한지",null,"201\r\nA_세지"],"목":["101\r\r\n통사1","204\r\nB_세지",null,"306\r\nF_한지",null,null,"102\r\r\n통사1"],"금":[null,null,"103\r\r\n통사1",null,"105\r\r\n통사1",null,"306\r\nF_한지"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"김윤미","schedule":{"월":["204\r\nC_물리",null,null,"105\r\r\n통과1","204\r\nA_물리",null,"204\r\nD_물리"],"화":[null,"204\r\nD_물리","104\r\r\n통과1",null,"204\r\nA_물리","103\r\n통과1",null],"수":[null,null,null,"204\r\nA_물리"],"목":["106\r\r\n통과1",null,null,null,"204\r\nC_물리","101\r\r\n과탐실",null],"금":[null,"204\r\nD_물리",null,"204\r\nC_물리",null,"101\r\r\n통과1","102\r\r\n통과1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"장재욱","schedule":{"월":["201\r\nC_기환",null,null,"301\r\nJ_물2",null,"303\r\nI_물2",null],"화":["303\r\nI_물2",null,null,null,null,"201\r\nB_기환","301\r\nJ_물2"],"수":[null,"102\r\r\n통과1",null,null],"목":["303\r\nI_물2",null,null,null,null,"301\r\nJ_물2","101\r\r\n통과1"],"금":["301\r\nJ_물2",null,"303\r\nI_물2","201\r\nC_기환"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"물리a","schedule":{"월":["105\r\r\n통과1","106\r\r\n통과1","104\r\r\n통과1","103\r\r\n통과1"],"화":[],"수":[],"목":[],"금":[]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이예림","schedule":{"월":["305\r\nK_생2",null,null,"305\r\nJ_생2","202\r\r\nA_생명",null,"202\r\nD_생명"],"화":[null,"202\r\nD_생명","305\r\nK_생2",null,"202\r\r\nA_생명","202\r\nB_생명","305\r\nJ_생2"],"수":["202\r\nB_생명",null,null,"202\r\r\nA_생명"],"목":[null,"202\r\nB_생명",null,null,null,"305\r\nJ_생2","305\r\nK_생2"],"금":["305\r\nJ_생2","202\r\nD_생명",null,"305\r\nK_생2"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박선미","schedule":{"월":["302\r\nK_지2",null,null,null,null,"302\r\nI_지2",null],"화":["302\r\nI_지2",null,"302\r\nK_지2","302\r\nF_지2",null,null,null],"수":["201\r\nB_기환","302\r\nF_지2",null,null],"목":["302\r\nI_지2","201\r\nB_기환",null,"302\r\nF_지2","201\r\nC_기환",null,"302\r\nK_지2"],"금":[null,null,"302\r\nI_지2","302\r\nK_지2",null,null,"302\r\nF_지2"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"임유리","schedule":{"월":["202\r\nC_지구","102\r\r\n통과1",null,null,null,null,"101\r\r\n통과1"],"화":[null,null,"105\r\r\n통과1",null,"106\r\r\n통과1",null,"102\r\r\n통과1"],"수":["106\r\r\n통과1",null,"101\r\r\n통과1",null],"목":[null,"105\r\r\n통과1","103\r\r\n통과1",null,"202\r\nC_지구","104\r\r\n통과1",null],"금":["103\r\r\n통과1",null,"104\r\r\n통과1","202\r\nC_지구"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"엄희숙","schedule":{"월":["203\r\nC_화학","104\r\r\n과탐실",null,null,null,"106\r\r\n과탐실","203\r\nD_화학"],"화":[null,"203\r\nD_화학",null,"304\r\nF_화2",null,"203\r\nB_화학","103\r\r\n과탐실"],"수":["203\r\nB_화학","304\r\nF_화2",null,"102\r\r\n과탐실"],"목":["105\r\r\n과탐실","203\r\nB_화학",null,"304\r\nF_화2","203\r\nC_화학",null,null],"금":[null,"203\r\nD_화학",null,"203\r\nC_화학",null,null,"304\r\nF_화2"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이정우","schedule":{"월":[null,"204\r\r\n스생1",null,"306\r\r\nJ_진독",null,"203\r\r\n스생1",null],"화":["206\r\r\n스생1",null,"204\r\r\n스생1","203\r\r\n스생1",null,null,"202\r\r\n스생1"],"수":[null,null,"202\r\r\n스생1",null],"목":["206\r\r\n스생1",null,"205\r\r\n스생1","201\r\r\n스생1",null,"207\r\r\n스생1",null],"금":[null,null,"207\r\r\n스생1",null,null,"205\r\r\n스생1","201\r\r\n스생1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이종민","schedule":{"월":[null,null,null,null,null,"306\r\nI_체탐",null],"화":["106\r\r\n체육1",null,null,"101\r\r\n체육1",null,null,null],"수":[null,null,null,null],"목":["306\r\nI_체탐",null,"303\r\nE_체탐",null,"102\r\r\n체육1",null,null],"금":["104\r\r\n체육1",null,null,"105\r\r\n체육1",null,"103\r\r\n체육1"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이학수","schedule":{"월":[null,"303\r\nG_스생","303\r\nE_체탐",null,null,null,null],"화":["306\r\nI_체탐",null,null,null,"307\r\nH_스생",null,"306\r\nJ_스생"],"수":[null,null,"305\r\nG_스생","305\r\nH_스생"],"목":[null,null,null,null,null,null,null],"금":["307\r\nJ_스생",null,"306\r\nI_체탐",null,null,"303\r\nE_체탐","307\r\r\nF_스생"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"체육a","schedule":{"월":["104\r\r\n체육1","105\r\r\n체육1","103\r\r\n체육1","102\r\r\n체육1",null,null,null],"화":[null,null,null,null,null,null,null],"수":["305\r\r\nE_체탐",null,"106\r\r\n체육1","101\r\r\n체육1"],"목":[],"금":[]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이상민","schedule":{"월":["세미나실\r\nK_공일","세미나실\r\nG_창경","세미나실\r\nE_창경",null,"104\r\r\n기술","105\r\r\n기술",null],"화":[null,null,"세미나실\r\nK_공일","105\r\r\n기술",null,"세미나실\r\nG_창경",null],"수":["세미나실\r\nE_창경",null,"세미나실\r\nG_창경","104\r\r\n기술"],"목":[null,null,"세미나실\r\nE_창경",null,"세미나실\r\nG_창경",null,"세미나실\r\nK_공일"],"금":[null,"106\r\r\n기술",null,"세미나실\r\nK_공일",null,"세미나실\r\nE_창경"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"기술a","schedule":{"월":[null,null,null,null,null,null,null],"화":[null,null,null,null,null,null,null],"수":[null,null,null,null],"목":["104\r\r\n기술","106\r\r\n기술","105\r\r\n기술","106\r\r\n기술"],"금":[]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"황인환","schedule":{"월":[null,"컴퓨터실\r\nG_프밍","101\r\r\n정보",null,null,null,"컴퓨터실\r\nD_데이터"],"화":[null,"컴퓨터실\r\nD_데이터","102\r\r\n정보",null,"컴퓨터실","306\r\nG_프밍",null],"수":["102\r\r\n정보",null,"컴퓨터실\r\nG_프밍","103\r\r\n정보"],"목":[null,"101\r\r\n정보",null,null,"컴퓨터실\r\nG_프밍","102\r\r\n정보",null],"금":[null,"컴퓨터실\r\nD_데이터",null,null,"103\r\r\n정보",null,"101\r\r\n정보"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박은아","schedule":{"월":[null,"203\r\r\n미감2","203\r\r\n미감2",null,null,null,"305\r\nH_미감3"],"화":["105\r\r\n미술","105\r\r\n미술",null,"307\r\nF_미감3",null,"303\r\nG_미감3",null],"수":[null,"201\r\r\n미감2","201\r\r\n미감2",null],"목":[null,null,"204\r\r\n미감2","204\r\r\n미감2",null,"202\r\r\n미감2","202\r\r\n미감2"],"금":["306\r\nJ_미감3",null,"106\r\r\n미술","106\r\r\n미술",null,"104\r\r\n미술","104\r\r\n미술"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"박효정","schedule":{"월":[null,"207\r\r\n음연창",null,"206\r\r\n음연창","101\r\r\n음악",null,"307\r\nH_음연"],"화":["207\r\r\n음연창",null,"103\r\r\n음악",null,"102\r\r\n음악",null,"205\r\r\n음연창"],"수":[null,"101\r\r\n음악",null,null],"목":["205\r\r\n음연창",null,null,null,"305\r\nG_음연","306307\r\nJ_음연",null],"금":["206\r\r\n음연창","103\r\r\n음악",null,null,null,"102\r\r\n음악"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"이승아","schedule":{"월":[null,null,"204\r\r\n일본","205\r\r\n일본",null,"201\r\r\n일본",null],"화":["204\r\r\n일본",null,"206\r\r\n일본","205\r\r\n일본",null,null,"203\r\r\n일본"],"수":[null,"207\r\r\n일본",null,null],"목":[null,null,null,"202\r\r\n일본",null,"203\r\r\n일본","207\r\r\n일본"],"금":["202\r\r\n일본",null,"201\r\r\n일본",null,null,"206\r\r\n일본","203\r\r\n일본"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"일본어a","schedule":{"월":[null,null,"205\r\r\n일본","204\r\r\n일본",null,null,null],"화":[null,null,"201\r\r\n일본","206\r\r\n일본",null,null,null],"수":[null,null,null,null],"목":[null,null,"202\r\r\n일본","207\r\r\n일본"],"금":[]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]},{"name":"정은정","schedule":{"월":["101\r\r\n진직탐",null,null,null,"207\r\r\nA_진직",null,null],"화":["104\r\r\n진직탐",null,null,null,"207\r\r\nA_진직",null,null],"수":[null,"106\r\r\n진직탐",null,"207\r\r\nA_진직"],"목":["102\r\r\n진직탐",null,null,null,null,"103\r\r\n진직탐",null],"금":[null,null,"105\r\r\n진직탐"]},"maxPeriods":7,"periodCounts":[7,7,4,7,7]}];
+        const isColoringEnabled = true;
+        const isFormatBColoringEnabled = false;
+        const isLineBreakEnabled = true;
+        const isLocationChipEnabled = true;
+
+        const teacherSearchInput = document.getElementById('teacher-search');
+        const autocompleteDropdown = document.getElementById('autocomplete-dropdown');
+        const scheduleContainer = document.getElementById('schedule-container');
+        const searchStats = document.getElementById('search-stats');
+        const favoriteChips = document.getElementById('favorite-chips');
+
+        let filteredTeachers = [...allSchedules];
+        let selectedIndex = -1;
+        let favorites = JSON.parse(localStorage.getItem('favTeachers') || '[]');
+        
+        // --- Helper Functions ---
+        function stringToHslColor(str, s, l) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const h = hash % 360;
+            return 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
+        }
+        
+        /**
+         * BUG FIX: This function has been rewritten to correctly handle subject formatting.
+         * The new logic separates location and subject first, then applies formatting,
+         * and finally combines them. This fixes issues where HTML tags from location
+         * chips interfered with subject pattern matching.
+         */
+        function processSubject(subject) {
+            if (!subject) return { html: '', style: '' };
+
+            const subjectStr = subject.toString();
+            let location = '';
+            let subjectName = subjectStr;
+            let cellBorderStyle = '';
+
+            // Step 1: Separate location from subject name.
+            // Assumes location is a single word at the beginning.
+            const match = subjectStr.match(/^(\S+)\s+(.+)$/);
+            
+            // Heuristic to prevent "A_Subject" from being incorrectly split
+            const isFormatAStyle = match && /^[A-Z]_/.test(match[1]);
+
+            if (match && !isFormatAStyle) {
+                location = match[1];
+                subjectName = match[2];
+            }
+
+            // Step 2: Process the subjectName for special formatting (tags, colors).
+            let processedSubjectName = subjectName;
+
+            // Format A: A_과목
+            if (isColoringEnabled) { 
+                const specialPattern = /^([A-Z])_(\S+)/;
+                const spMatch = subjectName.match(specialPattern);
+                if (spMatch) {
+                    const letter = spMatch[1];
+                    const rest = spMatch[2];
+                    const color = stringToHslColor(letter, 60, 55);
+                    cellBorderStyle = `border-left: 5px solid ${color};`;
+                    const tagHtml = `<span class="subject-tag" style="background-color: ${color};">${letter}</span>`;
+                    processedSubjectName = tagHtml + rest;
+                }
+            }
+            
+            // Format B: G화학, English
+            if (isFormatBColoringEnabled) { 
+                // Pattern for "G 화학" or "G화학"
+                const koreanPattern = /^([A-Z])\s?([가-힣].*)$/; 
+                const koreanMatch = subjectName.match(koreanPattern);
+
+                // Pattern for "English" (whole word)
+                const englishPattern = /^([A-Z][a-z]+)$/; 
+                const englishMatch = subjectName.match(englishPattern);
+
+                if (koreanMatch) {
+                    const letter = koreanMatch[1];
+                    const rest = koreanMatch[2];
+                    const color = stringToHslColor(letter, 60, 55);
+                    cellBorderStyle = `border-left: 5px solid ${color};`;
+                    const tagHtml = `<span class="subject-tag" style="background-color: ${color};">${letter}</span>`;
+                    processedSubjectName = tagHtml + rest;
+                } else if (englishMatch) {
+                    const letter = englishMatch[0].charAt(0);
+                    const color = stringToHslColor(letter, 60, 55);
+                    cellBorderStyle = `border-left: 5px solid ${color};`;
+                    const tagHtml = `<span class="subject-tag" style="background-color: ${color};">${letter}</span>`;
+                    processedSubjectName = tagHtml + subjectName.substring(1);
+                }
+            }
+
+            // Step 3: Process the location for chip formatting.
+            let locationHtml = '';
+            if (location) {
+                if (isLocationChipEnabled) {
+                    const locationColor = stringToHslColor(location, 65, 50);
+                    locationHtml = `<span class="location-chip" style="background-color: ${locationColor};">${location}</span>`;
+                } else {
+                    locationHtml = location; // Just text
+                }
+            }
+
+            // Step 4: Combine location and subject with line breaks.
+            let finalHtml;
+            if (locationHtml) {
+                if (isLineBreakEnabled) {
+                    finalHtml = `${locationHtml}<br>${processedSubjectName}`;
+                } else {
+                    finalHtml = `${locationHtml} ${processedSubjectName}`;
+                }
+            } else {
+                finalHtml = processedSubjectName; // No location, just the processed subject
+            }
+
+            return { html: finalHtml, style: cellBorderStyle };
+        }
+
+
+        // --- Sidebar ---
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const sidebarClose = document.getElementById('sidebar-close');
+        const sidebarList = document.getElementById('sidebar-list');
+        const sidebarSearchInput = document.getElementById('sidebar-search-input');
+        const sidebarCount = document.getElementById('sidebar-count');
+        let currentTeacherName = '';
+
+        function openSidebar() {
+            sidebar.classList.add('open');
+            sidebarOverlay.classList.add('active');
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        function renderSidebarList(filter) {
+            const query = (filter || '').trim().toLowerCase();
+            const list = query
+                ? allSchedules.filter(t => t.name.toLowerCase().includes(query))
+                : allSchedules;
+
+            sidebarCount.textContent = query
+                ? `${list.length}명 검색됨 / 전체 ${allSchedules.length}명`
+                : `전체 ${allSchedules.length}명`;
+
+            sidebarList.innerHTML = list.map(t => {
+                const isActive = t.name === currentTeacherName;
+                const isFav = favorites.includes(t.name);
+                const hasInfo = t.ext || t.subject || t.role;
+                let infoLine = '';
+                if (hasInfo) {
+                    const roles = t.role ? t.role.split(/[,，]/).map(r => r.trim()).filter(Boolean) : [];
+                    const parts = [t.subject, ...roles].filter(Boolean);
+                    infoLine = `<div class="sidebar-item-info">${parts.join(' · ')}${t.ext ? '<span class="sidebar-ext">' + t.ext + '</span>' : ''}</div>`;
+                }
+                return `<div class="sidebar-item${isActive ? ' active' : ''}" data-name="${t.name}">
+                    <div class="sidebar-item-main">${t.name}${isFav ? '<span class="sidebar-fav">★</span>' : ''}</div>${infoLine}
+                </div>`;
+            }).join('');
+        }
+
+        sidebarToggle.addEventListener('click', openSidebar);
+        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        sidebarSearchInput.addEventListener('input', (e) => renderSidebarList(e.target.value));
+
+        sidebarList.addEventListener('click', (e) => {
+            const item = e.target.closest('.sidebar-item');
+            if (!item) return;
+            const name = item.dataset.name;
+            selectTeacher(name);
+            currentTeacherName = name;
+            renderSidebarList(sidebarSearchInput.value);
+            closeSidebar();
+        });
+
+        // --- Main Functions ---
+        function init() {
+            updateSearchStats();
+            updateFavoriteChips();
+            setupEventListeners();
+            renderSidebarList('');
+        }
+
+        function setupEventListeners() {
+            teacherSearchInput.addEventListener('input', handleSearch);
+            teacherSearchInput.addEventListener('keydown', handleKeyNavigation);
+            teacherSearchInput.addEventListener('focus', showDropdown);
+            document.addEventListener('click', handleClickOutside);
+        }
+
+        function handleSearch(e) {
+            const query = e.target.value.trim().toLowerCase();
+            if (query === '') {
+                filteredTeachers = [...allSchedules];
+                hideDropdown();
+                showEmptyState();
+            } else {
+                filteredTeachers = allSchedules.filter(teacher => teacher.name.toLowerCase().includes(query));
+                updateAutocomplete();
+            }
+            updateSearchStats();
+        }
+
+        function handleKeyNavigation(e) {
+            const items = autocompleteDropdown.querySelectorAll('.autocomplete-item');
+            if (!items.length) return;
+
+            switch(e.key) {
+                case 'ArrowDown':
+                    e.preventDefault();
+                    selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+                    updateSelection(items);
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    selectedIndex = Math.max(selectedIndex - 1, 0);
+                    updateSelection(items);
+                    break;
+                case 'Enter':
+                    e.preventDefault();
+                    if (selectedIndex >= 0 && items[selectedIndex]) {
+                        selectTeacher(filteredTeachers[selectedIndex].name);
+                    } else if (filteredTeachers.length > 0) {
+                        selectTeacher(filteredTeachers[0].name);
+                    }
+                    break;
+                case 'Escape':
+                    hideDropdown();
+                    break;
+            }
+        }
+
+        function updateSelection(items) {
+            items.forEach((item, index) => item.classList.toggle('selected', index === selectedIndex));
+        }
+
+        function updateAutocomplete() {
+            if (filteredTeachers.length === 0) {
+                hideDropdown();
+                return;
+            }
+            autocompleteDropdown.innerHTML = filteredTeachers.map(teacher => {
+                const isFavorite = favorites.includes(teacher.name);
+                return `<div class="autocomplete-item" onclick="selectTeacher('${teacher.name}')">${isFavorite ? '<span class="favorite-inline">저장</span>' : ''}${teacher.name}</div>`;
+            }).join('');
+            showDropdown();
+            selectedIndex = -1;
+        }
+
+        function selectTeacher(teacherName) {
+            teacherSearchInput.value = teacherName;
+            hideDropdown();
+            currentTeacherName = teacherName;
+            displaySchedule(teacherName);
+            renderSidebarList(sidebarSearchInput.value);
+        }
+
+        function displaySchedule(teacherName) {
+            const teacher = allSchedules.find(t => t.name === teacherName);
+            if (!teacher) {
+                scheduleContainer.innerHTML = '<div class="empty-state"><h3>해당 교사의 시간표 정보가 없습니다.</h3></div>';
+                return;
+            }
+            
+            const isFavorite = favorites.includes(teacherName);
+            const days = ['월', '화', '수', '목', '금'];
+            const maxPeriods = teacher.maxPeriods || 7; // 동적 교시 수 사용
+            const periodCounts = teacher.periodCounts || [7, 7, 7, 6, 6]; // 요일별 교시 수
+            
+            // 교사 부가정보 표시
+            const hasInfo = teacher.ext || teacher.subject || teacher.role;
+            let infoHtml = '';
+            if (hasInfo) {
+                const chips = [];
+                if (teacher.subject) chips.push(`<span class="info-chip info-chip-subject">${teacher.subject}</span>`);
+                if (teacher.role) {
+                    teacher.role.split(/[,，]/).map(r => r.trim()).filter(Boolean).forEach(r => {
+                        chips.push(`<span class="info-chip info-chip-role">${r}</span>`);
+                    });
+                }
+                if (teacher.ext) chips.push(`<span class="info-chip info-chip-ext">내선 ${teacher.ext}</span>`);
+                infoHtml = `<div class="teacher-info-tags">${chips.join('')}</div>`;
+            }
+
+            let tableHTML = `
+                <div class="schedule-header">
+                    <div class="teacher-info"><h2>${teacher.name} 선생님 시간표</h2>${infoHtml}</div>
+                    <div class="teacher-actions">
+                        <button class="action-btn ${isFavorite ? 'favorited' : ''}" onclick="toggleFavorite('${teacherName}')">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${isFavorite ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                            <span>${isFavorite ? '즐겨찾기됨' : '즐겨찾기'}</span>
+                        </button>
+                        <button class="action-btn" onclick="downloadExcel('${teacherName}')">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span>엑셀</span>
+                        </button>
+                        <button class="action-btn" onclick="saveAsImage('${teacherName}')">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <span>이미지</span>
+                        </button>
+                        <button class="action-btn" onclick="printSchedule()">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                            <span>인쇄</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                <table>
+                    <thead><tr><th>교시</th><th>월요일</th><th>화요일</th><th>수요일</th><th>목요일</th><th>금요일</th></tr></thead>
+                    <tbody>`;
+
+            for (let i = 0; i < maxPeriods; i++) {
+                tableHTML += `<tr><td>${i + 1}교시</td>`;
+                days.forEach((day, dayIndex) => {
+                    // 해당 요일의 교시 수를 확인해서 데이터가 있는 경우만 표시
+                    if (i < periodCounts[dayIndex] && teacher.schedule[day] && teacher.schedule[day][i]) {
+                        const subjectInfo = processSubject(teacher.schedule[day][i]);
+                        tableHTML += `<td style="${subjectInfo.style}">${subjectInfo.html}</td>`;
+                    } else {
+                        // 해당 요일에 이 교시가 없으면 빈 셀
+                        tableHTML += `<td style="background-color: var(--background-color); color: var(--subtle-text);">-</td>`;
+                    }
+                });
+                tableHTML += '</tr>';
+            }
+            
+            tableHTML += '</tbody></table></div>';
+            scheduleContainer.innerHTML = tableHTML;
+        }
+
+        function toggleFavorite(teacherName) {
+            const index = favorites.indexOf(teacherName);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(teacherName);
+            }
+            localStorage.setItem('favTeachers', JSON.stringify(favorites));
+            updateFavoriteChips();
+            displaySchedule(teacherName);
+            renderSidebarList(sidebarSearchInput.value);
+        }
+
+        function updateFavoriteChips() {
+            if (favorites.length === 0) {
+                favoriteChips.innerHTML = '<span style="color: var(--subtle-text); font-size: 13px;">아직 즐겨찾기한 교사가 없습니다</span>';
+                return;
+            }
+            favoriteChips.innerHTML = favorites.map(name => `<button class="favorite-chip" onclick="selectTeacher('${name}')">${name}</button>`).join('');
+        }
+
+        function updateSearchStats() {
+            const total = allSchedules.length;
+            const filtered = filteredTeachers.length;
+            if (teacherSearchInput.value.trim() === '') {
+                searchStats.textContent = `총 ${total}명의 교사`;
+            } else {
+                searchStats.textContent = `${filtered}명의 교사가 검색됨 (전체 ${total}명)`;
+            }
+        }
+
+        function showDropdown() {
+            if (filteredTeachers.length > 0 && teacherSearchInput.value.trim() !== '') {
+                autocompleteDropdown.style.display = 'block';
+            }
+        }
+
+        function hideDropdown() {
+            autocompleteDropdown.style.display = 'none';
+            selectedIndex = -1;
+        }
+
+        function handleClickOutside(e) {
+            if (!e.target.closest('.search-container')) {
+                hideDropdown();
+            }
+        }
+
+        function showEmptyState() {
+            scheduleContainer.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2z"></path>
+                            <path d="M8 9h8"></path>
+                            <path d="M8 13h5"></path>
+                        </svg>
+                    </div>
+                    <h3>시간표를 확인하고 싶은 교사를 검색해보세요</h3>
+                    <p>이름을 입력하시면 자동으로 목록이 나타납니다</p>
+                </div>`;
+        }
+
+        function printSchedule() {
+            window.print();
+        }
+
+        function saveAsImage(teacherName) {
+            const container = document.getElementById('schedule-container');
+            if (!container) return;
+
+            // 버튼 숨기고 캡처
+            const actions = container.querySelector('.teacher-actions');
+            if (actions) actions.style.display = 'none';
+
+            // 캡처용 임시 스타일 적용
+            const header = container.querySelector('.schedule-header');
+            const tableWrap = container.querySelector('.table-container');
+            if (header) header.style.maxWidth = 'none';
+            if (tableWrap) tableWrap.style.maxWidth = 'none';
+
+            // 모바일 대응: 적절한 크기로 캡처
+            const isMobile = window.innerWidth <= 768;
+            const captureWidth = isMobile ? Math.max(container.scrollWidth, 420) : container.scrollWidth;
+
+            html2canvas(container, {
+                backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--card-background').trim() || '#ffffff',
+                scale: 2,
+                width: captureWidth,
+                windowWidth: captureWidth,
+                useCORS: true,
+                logging: false,
+                onclone: function(clonedDoc) {
+                    // 클론에서 버튼 제거, 여백 추가
+                    const clonedContainer = clonedDoc.getElementById('schedule-container');
+                    const clonedActions = clonedContainer.querySelector('.teacher-actions');
+                    if (clonedActions) clonedActions.remove();
+                    clonedContainer.style.padding = '20px';
+                }
+            }).then(canvas => {
+                // 버튼 복원
+                if (actions) actions.style.display = '';
+                if (header) header.style.maxWidth = '';
+                if (tableWrap) tableWrap.style.maxWidth = '';
+
+                // 모바일: 공유/저장 분기
+                canvas.toBlob(blob => {
+                    if (!blob) return;
+
+                    // 공유 API 지원 시 (모바일)
+                    if (isMobile && navigator.share && navigator.canShare) {
+                        const file = new File([blob], `${teacherName}_시간표.png`, { type: 'image/png' });
+                        if (navigator.canShare({ files: [file] })) {
+                            navigator.share({
+                                files: [file],
+                                title: `${teacherName} 선생님 시간표`
+                            }).catch(() => {
+                                // 공유 취소 시 직접 다운로드
+                                downloadBlob(blob, `${teacherName}_시간표.png`);
+                            });
+                            return;
+                        }
+                    }
+                    // PC 또는 공유 미지원: 직접 다운로드
+                    downloadBlob(blob, `${teacherName}_시간표.png`);
+                }, 'image/png');
+            }).catch(() => {
+                if (actions) actions.style.display = '';
+                if (header) header.style.maxWidth = '';
+                if (tableWrap) tableWrap.style.maxWidth = '';
+                alert('이미지 저장에 실패했습니다. 다시 시도해주세요.');
+            });
+        }
+
+        function downloadBlob(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadExcel(teacherName) {
+            const teacher = allSchedules.find(t => t.name === teacherName);
+            if (!teacher) return;
+
+            const days = ['월', '화', '수', '목', '금'];
+            const dayHeaders = ['월요일', '화요일', '수요일', '목요일', '금요일'];
+            const maxPeriods = teacher.maxPeriods || 7;
+            const periodCounts = teacher.periodCounts || [7, 7, 7, 6, 6];
+
+            // 순수 과목명 추출 (HTML 태그 없이)
+            function getPlainSubject(subject) {
+                if (!subject) return '';
+                return subject.toString();
+            }
+
+            let html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+<x:Name>시간표</x:Name>
+<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook>
+</xml><![endif]-->
+<style>
+    table { border-collapse: collapse; }
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #B4B4B4;
+        font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+        font-size: 11pt;
+        padding: 6px 10px;
+        mso-number-format: '\@';
+    }
+    .title-row td {
+        font-size: 16pt;
+        font-weight: bold;
+        color: #1F2937;
+        border: none;
+        padding: 12px 0 8px 0;
+    }
+    .spacer td {
+        border: none;
+        height: 6px;
+        font-size: 1pt;
+    }
+    th {
+        background-color: #4472C4;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 11pt;
+        padding: 10px 10px;
+        border: 1px solid #3461A8;
+    }
+    .period-cell {
+        background-color: #D9E2F3;
+        font-weight: bold;
+        color: #2B3E5B;
+        width: 70px;
+    }
+    .subject-cell {
+        background-color: #FFFFFF;
+        color: #1F2937;
+        width: 120px;
+        height: 36px;
+    }
+    .empty-cell {
+        background-color: #F8F9FA;
+        color: #B0B0B0;
+    }
+</style>
+</head>
+<body>
+<table>
+    <tr class="title-row"><td colspan="6">${teacher.name} 선생님 시간표</td></tr>
+    <tr class="spacer"><td colspan="6"></td></tr>
+    <tr><th style="width:70px">교시</th>`;
+
+            dayHeaders.forEach(d => {
+                html += `<th style="width:120px">${d}</th>`;
+            });
+            html += '</tr>';
+
+            for (let i = 0; i < maxPeriods; i++) {
+                html += `<tr><td class="period-cell">${i + 1}교시</td>`;
+                days.forEach((day, dayIndex) => {
+                    if (i < periodCounts[dayIndex] && teacher.schedule[day] && teacher.schedule[day][i]) {
+                        const subject = getPlainSubject(teacher.schedule[day][i]);
+                        html += `<td class="subject-cell">${subject}</td>`;
+                    } else {
+                        html += `<td class="empty-cell">-</td>`;
+                    }
+                });
+                html += '</tr>';
+            }
+
+            html += '</table></body></html>';
+
+            const blob = new Blob(['\uFEFF' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${teacher.name}_시간표.xls`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadAllExcel() {
+            if (!allSchedules || allSchedules.length === 0) return;
+
+            const days = ['월', '화', '수', '목', '금'];
+            const dayFull = ['월요일', '화요일', '수요일', '목요일', '금요일'];
+            // 첫 번째 교사의 교시 구조를 기준으로 사용
+            const periodCounts = allSchedules[0].periodCounts || [7, 7, 7, 6, 6];
+            const maxPeriods = allSchedules[0].maxPeriods || 7;
+            const totalColumns = periodCounts.reduce((a, b) => a + b, 0);
+
+            let html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+<x:Name>전체 시간표</x:Name>
+<x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook>
+</xml><![endif]-->
+<style>
+    table { border-collapse: collapse; }
+    td, th {
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #B4B4B4;
+        font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+        font-size: 10pt;
+        padding: 4px 6px;
+        mso-number-format: '\@';
+    }
+    .title-row td {
+        font-size: 14pt;
+        font-weight: bold;
+        color: #1F2937;
+        border: none;
+        padding: 10px 0 6px 0;
+    }
+    .info-row td {
+        font-size: 9pt;
+        color: #718096;
+        border: none;
+        padding: 2px 0 8px 0;
+    }
+    .spacer td {
+        border: none;
+        height: 4px;
+        font-size: 1pt;
+    }
+    .day-header {
+        background-color: #2B579A;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 11pt;
+        padding: 8px 6px;
+        border: 1px solid #1E3F6F;
+    }
+    .period-header {
+        background-color: #4472C4;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 9pt;
+        padding: 6px 4px;
+        border: 1px solid #3461A8;
+        width: 50px;
+    }
+    .teacher-name-header {
+        background-color: #2B579A;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 10pt;
+        padding: 8px 6px;
+        border: 1px solid #1E3F6F;
+        width: 80px;
+    }
+    .teacher-period-header {
+        background-color: #4472C4;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 9pt;
+        padding: 6px 4px;
+        border: 1px solid #3461A8;
+        width: 80px;
+    }
+    .teacher-name {
+        background-color: #D9E2F3;
+        font-weight: bold;
+        color: #1F2937;
+        font-size: 10pt;
+        padding: 5px 8px;
+        white-space: nowrap;
+    }
+    .subject-cell {
+        background-color: #FFFFFF;
+        color: #1F2937;
+        font-size: 9pt;
+        height: 28px;
+    }
+    .empty-cell {
+        background-color: #F2F2F2;
+        color: #B0B0B0;
+        font-size: 9pt;
+    }
+    .alt-row .teacher-name {
+        background-color: #C5D4EB;
+    }
+    .alt-row .subject-cell {
+        background-color: #F8FAFD;
+    }
+    .alt-row .empty-cell {
+        background-color: #EDEDF0;
+    }
+</style>
+</head>
+<body>
+<table>`;
+
+            // 제목행
+            html += `<tr class="title-row"><td colspan="${totalColumns + 1}">전체 교사 주간 시간표</td></tr>`;
+            html += `<tr class="info-row"><td colspan="${totalColumns + 1}">총 ${allSchedules.length}명 | 교시 구조: 월(${periodCounts[0]}) 화(${periodCounts[1]}) 수(${periodCounts[2]}) 목(${periodCounts[3]}) 금(${periodCounts[4]})</td></tr>`;
+            html += `<tr class="spacer"><td colspan="${totalColumns + 1}"></td></tr>`;
+
+            // 요일 헤더행 (병합 셀)
+            html += '<tr><td class="teacher-name-header" rowspan="2">교사명</td>';
+            days.forEach((day, idx) => {
+                html += `<td class="day-header" colspan="${periodCounts[idx]}">${dayFull[idx]}</td>`;
+            });
+            html += '</tr>';
+
+            // 교시 번호 헤더행
+            html += '<tr>';
+            days.forEach((day, idx) => {
+                for (let p = 1; p <= periodCounts[idx]; p++) {
+                    html += `<td class="period-header">${p}</td>`;
+                }
+            });
+            html += '</tr>';
+
+            // 교사별 데이터행
+            allSchedules.forEach((teacher, tIdx) => {
+                const altClass = tIdx % 2 === 1 ? ' class="alt-row"' : '';
+                html += `<tr${altClass}>`;
+                html += `<td class="teacher-name">${teacher.name}</td>`;
+
+                days.forEach((day, dayIndex) => {
+                    for (let p = 0; p < periodCounts[dayIndex]; p++) {
+                        if (teacher.schedule[day] && teacher.schedule[day][p] && teacher.schedule[day][p].toString().trim() !== '') {
+                            html += `<td class="subject-cell">${teacher.schedule[day][p]}</td>`;
+                        } else {
+                            html += '<td class="empty-cell"></td>';
+                        }
+                    }
+                });
+
+                html += '</tr>';
+            });
+
+            html += '</table></body></html>';
+
+            const blob = new Blob(['\uFEFF' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '전체_교사_시간표.xls';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        init();
+    </script>
+</body>
+</html>
+        
